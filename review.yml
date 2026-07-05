@@ -1,0 +1,122 @@
+aid: honorlock
+name: Honorlock
+review:
+  question: Does Honorlock expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Honorlock does not publish a documented
+    public WebSocket (ws://, wss://) or Server-Sent Events surface on its
+    developer API. The partner developer toolkit ("APIs and Elements")
+    described at docs.honorlock.com is a request/response REST API for
+    provisioning and session lifecycle, paired with a browser-side
+    Integration/Elements SDK for the exam-taker experience. Any realtime
+    proctoring transport (live pop-in, streaming of webcam/screen to reviewers)
+    is internal to Honorlock's own web/extension client and is not published as
+    a consumable, documented WebSocket API - so there is no server-push
+    transport on Honorlock's public API to model.
+findings:
+  summary: |
+    Honorlock does not publish a documented public WebSocket API. Honorlock is
+    an online exam proctoring / academic integrity platform for higher
+    education and professional certification. Its primary integration path is
+    LTI 1.3, installed natively into LMS platforms (Canvas, Blackboard, Moodle,
+    D2L Brightspace, Open LMS, Docebo, Intellum) and supporting publisher
+    platforms (Pearson, McGraw Hill, ALEKS) via LMS workflows. For assessment
+    platforms that embed proctoring outside an LMS, Honorlock offers a
+    sales-gated partner developer toolkit ("APIs and Elements") at
+    docs.honorlock.com: a REST API covering an Enablement phase (generate
+    authentication tokens, create users, create courses, create exams), an
+    Administrator Experience (list users, generate tokens, manage courses,
+    Elements integration), and an Exam Taker Experience (browser extension
+    verification, session setup, Verify Authentication, begin session, End Exam
+    Session) plus a browser-side Integration/Elements SDK. No public base URL,
+    OpenAPI description, self-service API key flow, or WebSocket/SSE endpoint is
+    published as of the review date.
+  accessModel: |
+    Partner / sales-gated. Honorlock's custom-integrations page directs
+    prospective integrators to "Speak to an expert about integrating with
+    Honorlock" via a contact form. There is no advertised free tier, public
+    API key issuance, or self-service developer onboarding. The bulk of
+    institutional adoption is via native LTI 1.3 LMS installs (installable to a
+    primary LMS account or a sub-account, typically in about an hour) rather
+    than direct API integration.
+  ltiIntegration: |
+    Honorlock integrates directly with LTI-compliant platforms using LTI
+    version 1.3. Native LTI integrations exist for Canvas, Blackboard, Moodle,
+    D2L Brightspace, Open LMS, Docebo, and Intellum. This is the recommended
+    and most common integration path; the REST API + Elements SDK is the
+    alternative for custom, non-LMS assessment platforms.
+  endpointsModeled: true
+  endpointsModeledNote: |
+    Honorlock's developer docs (docs.honorlock.com) are a client-rendered
+    single-page app and its endpoint reference is gated behind the partner
+    program, so exact HTTP methods, paths, and base URL could not be confirmed
+    from public sources. The logical APIs in apis.yml (Authentication, Users,
+    Courses, Exams, Exam Sessions, Elements SDK) and the named operations below
+    are modeled from Honorlock's public integration narrative
+    (honorlock.com/custom-integrations and search-indexed doc excerpts), not
+    copied from a published OpenAPI. No OpenAPI file was fabricated.
+  transports:
+    - protocol: REST
+      scheme: https
+      documented: partial
+      note: Partner developer REST API for provisioning (tokens, users, courses, exams) and exam-session lifecycle. Documented at docs.honorlock.com but gated; base URL not publicly published.
+    - protocol: SDK
+      scheme: https
+      documented: partial
+      note: Browser-side Integration/Elements SDK (JavaScript) for the exam-taker experience - extension verification, authentication, in-exam proctoring surface. Not a server REST resource.
+    - protocol: LTI
+      scheme: https
+      documented: true
+      note: LTI 1.3 native LMS integration. Primary integration path; standards-based launch rather than a bespoke API.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Honorlock's developer docs, custom-integrations page, or product pages as of the review date.
+  operationsModeled:
+    - Generate Authentication Tokens
+    - Create Users
+    - List Users
+    - Create Courses
+    - Create Exams
+    - Session Setup
+    - Verify Authentication
+    - Begin Exam Session
+    - End Exam Session
+sources:
+  - url: https://docs.honorlock.com/api
+    type: Documentation
+    note: Honorlock API reference (client-rendered SPA; content gated behind the partner developer program).
+  - url: https://docs.honorlock.com/integration-sdk
+    type: Documentation
+    note: Integration SDK / Elements toolkit for the browser-side exam-taker experience.
+  - url: https://docs.honorlock.com/exam-taker
+    type: Documentation
+    note: Exam Taker Experience - extension verification, session setup, Verify Authentication, End Exam Session.
+  - url: https://honorlock.com/custom-integrations/
+    type: Documentation
+    note: Three-phase integration framework (Enablement, Administrator Experience, Exam Taker Experience); sales-gated "Speak to an expert" onboarding.
+  - url: https://honorlock.com/integrations/
+    type: Documentation
+    note: Native LTI 1.3 LMS integrations - Canvas, Blackboard, Moodle, D2L, Docebo, Intellum; publisher platforms via LMS workflows.
+  - url: https://honorlock.com/institutions/
+    type: Website
+    note: Institutional offering; flat-rate per-exam / per-test-taker pricing with implementation, training, and 24/7 support included. No list prices published.
+  - url: https://apitracker.io/a/honorlock
+    type: Reference
+    note: Third-party API tracker profile; API style, base URL, auth, and pricing fields are all uncataloged (dashes).
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists, and no public SSE surface exists, so
+    no AsyncAPI document was created. Honorlock's public developer surface is a
+    sales-gated REST API plus a browser-side Elements/Integration SDK, with
+    LTI 1.3 as the primary LMS integration path. Because the endpoint reference
+    is gated and served from a client-rendered SPA, the logical APIs and named
+    operations in apis.yml are modeled from Honorlock's public integration
+    documentation (endpointsModeled: true) rather than from a published
+    OpenAPI, and no OpenAPI/openapi directory was fabricated.
