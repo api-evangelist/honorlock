@@ -133,6 +133,10 @@ apis:
     proctoring surface. Client-side JavaScript toolkit rather than a server REST
     resource.
 common:
+- type: TrustCenter
+  url: security/honorlock-trust-center.yml
+- type: DomainSecurity
+  url: security/honorlock-domain-security.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/honorlock
 - type: Website
