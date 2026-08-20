@@ -60,6 +60,10 @@ apis:
 - aid: honorlock:honorlock-users-api
   name: Honorlock Users API
   tags:
+  - User
+  - Provisioning
+  - Roster
+  tags_raw:
   - Users
   - Provisioning
   - Roster
