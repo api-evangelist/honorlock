@@ -14,6 +14,17 @@ description: Honorlock is an online exam proctoring and academic integrity platf
   experience (extension verification, session setup, begin/end session). The
   developer program is sales-gated (contact-sales onboarding); Honorlock does not
   publish a self-service API key flow, an OpenAPI description, or a public base URL.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
