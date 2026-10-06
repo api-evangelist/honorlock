@@ -50,7 +50,7 @@ tags:
 - Exams
 - Education
 created: '2026-07-05'
-modified: '2026-07-05'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: honorlock:honorlock-authentication-api
@@ -166,6 +166,8 @@ apis:
     proctoring surface. Client-side JavaScript toolkit rather than a server REST
     resource.
 common:
+- url: https://honorlock.com/blog/
+  type: Blog
 - type: TrustCenter
   url: security/honorlock-trust-center.yml
 - type: DomainSecurity
