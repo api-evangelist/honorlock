@@ -1,4 +1,4 @@
-# Honorlock (honorlock)
+# Honorlock
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,93 +64,91 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Honorlock is an online exam proctoring and academic integrity platform for higher education and professional certification. Its primary integration path is **LTI 1.3**, installed natively into LMS platforms - Canvas, Blackboard, Moodle, D2L Brightspace, Open LMS, Docebo, and Intellum - plus publisher platforms such as Pearson, McGraw Hill, and ALEKS via LMS workflows. For assessment platforms that need to embed proctoring outside an LMS, Honorlock offers a partner developer toolkit ("APIs and Elements") documented at `docs.honorlock.com`.
+Honorlock is an online exam proctoring and academic integrity platform for higher education and professional certification. Its primary integration path is LTI 1.3, installed natively into LMS platforms - Canvas, Blackboard, Moodle, D2L Brightspace, Open LMS, Docebo, and Intellum - plus publisher platforms such as Pearson, McGraw Hill, and ALEKS via LMS workflows. For assessment platforms that need to embed proctoring outside an LMS, Honorlock offers a partner developer toolkit ("APIs and Elements") documented at docs.honorlock.com - a REST API for provisioning users, courses, exams, authentication tokens, and exam sessions, plus a browser-based Elements/Integration SDK that drives the exam-taker experience (extension verification, session setup, begin/end session). The developer program is sales-gated (contact-sales onboarding); Honorlock does not publish a self-service API key flow, an OpenAPI description, or a public base URL.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/honorlock/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/honorlock/refs/heads/main/apis.yml)
+**Areas:** Proctoring · Online Proctoring · Academic Integrity · Assessment · EdTech · LTI · Exams · Education
 
-## Access Model (Important)
+## Honorlock on APIs.io
 
-Honorlock's developer program is **sales-gated**, not self-service:
+Everything profiled for Honorlock is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/honorlock/](https://apis.io/providers/honorlock/)** — or go straight to one of the APIs or properties below.
 
-- **LTI 1.3 is the main path.** Most institutions adopt Honorlock by installing its native LTI 1.3 tool into their LMS (to a primary account or a sub-account, typically in about an hour). No bespoke API work is required for the standard LMS flow.
-- **The REST API + Elements SDK is for custom assessment platforms.** Honorlock exposes a developer toolkit ("APIs and Elements") for embedding proctoring directly into a non-LMS assessment platform. It is documented at `docs.honorlock.com` but the endpoint reference is served from a client-rendered single-page app and is gated behind the partner developer program.
-- **No public self-service.** There is no advertised free tier, public API key issuance, published base URL, or OpenAPI description. The custom-integrations page directs integrators to "Speak to an expert about integrating with Honorlock."
+### APIs (6)
 
-Because the endpoint reference is gated, the APIs and operations catalogued here are **modeled** from Honorlock's public integration documentation (the three-phase Enablement / Administrator Experience / Exam Taker Experience narrative), not copied from a published OpenAPI. No OpenAPI document was fabricated. See `review.yml` (`endpointsModeled: true`).
+- [Honorlock Authentication API](https://apis.io/apis/honorlock/honorlock-authentication-api/) — Generate the integration and user authentication tokens that authorize an assessment platform to provision and drive Honorlock proctoring on behalf of an…
+- [Honorlock Users API](https://apis.io/apis/honorlock/honorlock-users-api/) — Create and list the users (students, instructors, administrators) that participate in proctored exams. Part of the API-driven enablement flow that mirrors…
+- [Honorlock Courses API](https://apis.io/apis/honorlock/honorlock-courses-api/) — Create and manage the courses that group exams and enrolled users when an assessment platform integrates directly rather than through an LMS. Endpoints are…
+- [Honorlock Exams API](https://apis.io/apis/honorlock/honorlock-exams-api/) — Create and configure proctored exams - the settings that determine which integrity controls (ID verification, browser guard, recording, room scan, live…
+- [Honorlock Exam Sessions API](https://apis.io/apis/honorlock/honorlock-exam-sessions-api/) — Drive the exam-taker lifecycle - set up a session, verify that the test taker has completed the authentication steps (Verify Authentication), begin the…
+- [Honorlock Elements & Integration SDK](https://apis.io/apis/honorlock/honorlock-elements-sdk/) — Browser-side Integration SDK and Elements UI components that embed the Honorlock exam-taker experience into a custom assessment platform - browser extension…
 
-## Tags
+### Published properties
 
-- Proctoring
-- Online Proctoring
-- Academic Integrity
-- Assessment
-- EdTech
-- LTI
-- Exams
-- Education
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Timestamps
+#### Security (2)
 
-- **Created:** 2026-07-05
-- **Modified:** 2026-07-05
+Authentication, trust centre, and vulnerability disclosure.
 
-## APIs
+- [Honorlock Domain Security](https://apis.io/security/honorlock/honorlock-domain-security/)
+- [Honorlock Trust Center](https://apis.io/security/honorlock/honorlock-trust-center/)
 
-> Endpoints below are modeled from Honorlock's public integration documentation. Exact HTTP methods, paths, and base URL are gated behind the partner developer program.
+## Where to find this API
 
-### Honorlock Authentication API
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-Generate the integration and user authentication tokens that authorize an assessment platform to provision and drive Honorlock proctoring on behalf of an institution.
-
-- **Documentation:** [https://docs.honorlock.com/api](https://docs.honorlock.com/api)
-
-### Honorlock Users API
-
-Create and list the users (students, instructors, administrators) that participate in proctored exams - the API-driven equivalent of what LTI 1.3 provisions automatically inside a native LMS install.
-
-- **Documentation:** [https://docs.honorlock.com/api](https://docs.honorlock.com/api)
-
-### Honorlock Courses API
-
-Create and manage the courses that group exams and enrolled users when an assessment platform integrates directly rather than through an LMS.
-
-- **Documentation:** [https://docs.honorlock.com/api](https://docs.honorlock.com/api)
-
-### Honorlock Exams API
-
-Create and configure proctored exams - the settings that determine which integrity controls (ID verification, browser guard, recording, room scan, live pop-in, Search and Destroy) apply to an assessment.
-
-- **Documentation:** [https://docs.honorlock.com/api](https://docs.honorlock.com/api)
-
-### Honorlock Exam Sessions API
-
-Drive the exam-taker lifecycle - set up a session, verify that the test taker has completed the authentication steps (Verify Authentication), begin the proctored attempt, and close it out (End Exam Session) when the exam is submitted.
-
-- **Documentation:** [https://docs.honorlock.com/exam-taker](https://docs.honorlock.com/exam-taker)
-
-### Honorlock Elements & Integration SDK
-
-Browser-side Integration SDK and Elements UI components that embed the Honorlock exam-taker experience into a custom assessment platform - browser extension verification, pre-exam authentication and room scan, and the in-exam proctoring surface. A client-side JavaScript toolkit rather than a server REST resource.
-
-- **Documentation:** [https://docs.honorlock.com/integration-sdk](https://docs.honorlock.com/integration-sdk)
-
-## LTI Integration
-
-Honorlock integrates directly with LTI-compliant platforms using **LTI version 1.3**. Native LTI integrations exist for Canvas, Blackboard, Moodle, D2L Brightspace, Open LMS, Docebo, and Intellum, with support for third-party publisher platforms (Pearson, McGraw Hill, ALEKS) via LMS workflows. This is the recommended and most common integration path; the REST API and Elements SDK are the alternative for custom, non-LMS assessment platforms.
-
-## Pricing
-
-Honorlock uses a **flat-rate price per exam / per test taker** (rather than per-hour billing), with implementation, training, and 24/7/365 US-based support included at no extra cost. Honorlock does not publish list prices, minimums, or standard per-student rates; institutions receive a **custom quote** shaped by exam volume, modality mix, LMS scope, and premium capabilities such as Search and Destroy. Contact Honorlock directly for pricing.
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/honorlock)
 - [Website](https://honorlock.com)
 - [Documentation](https://docs.honorlock.com)
-- [Custom Integrations](https://honorlock.com/custom-integrations/)
-- [LMS Integrations](https://honorlock.com/integrations/)
+- [Blog](https://honorlock.com/blog/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 9.1** — minimal · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 7.9 |
+
+**Agent readiness 0.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/honorlock/](https://apis.io/providers/honorlock/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Honorlock: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/honorlock/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
